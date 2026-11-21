@@ -1,0 +1,783 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Un lugar para ti ♡</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #fff0f5, #fce1ed, #ffeaf2);
+    font-family: 'Poppins', sans-serif;
+    color: #75445b;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+header {
+    text-align: center;
+    padding: 45px 20px 25px;
+}
+
+h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(42px, 8vw, 75px);
+    color: #c45c87;
+}
+
+header p {
+    margin-top: 12px;
+    font-size: 14px;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 30px 15px;
+}
+
+.card {
+    width: 260px;
+    padding: 25px;
+    background: rgba(255,255,255,0.8);
+    border: 1px solid #f7c9dc;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 10px 30px #d88eae25;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px #d88eae50;
+}
+
+.emoji {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.card h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: #c45c87;
+}
+
+.card p {
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+button {
+    border: none;
+    background: #d8759e;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #b84e7d;
+    transform: scale(1.04);
+}
+
+.seccion {
+    display: none;
+    max-width: 850px;
+    margin: 20px auto;
+    padding: 30px 20px;
+    background: rgba(255,255,255,0.85);
+    border-radius: 25px;
+    text-align: center;
+    animation: aparecer 0.6s ease;
+}
+
+.seccion.activa {
+    display: block;
+}
+
+.seccion h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 45px;
+    color: #c45c87;
+    margin-bottom: 20px;
+}
+
+.seccion p {
+    line-height: 1.9;
+    margin-bottom: 15px;
+}
+
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 18px;
+    margin: 25px 0;
+}
+
+.galeria img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 6px solid white;
+    box-shadow: 0 5px 15px #00000015;
+    transition: 0.3s;
+}
+
+.galeria img:hover {
+    transform: rotate(-2deg) scale(1.03);
+}
+
+.caja {
+    background: #fff0f6;
+    border-radius: 20px;
+    padding: 25px;
+    margin: 20px 0;
+}
+
+.caja h3 {
+    color: #c45c87;
+    margin-bottom: 15px;
+}
+
+.poema {
+    font-family: 'Dancing Script', cursive;
+    font-size: 25px;
+    line-height: 1.8;
+    color: #a34d76;
+}
+
+#sorpresa {
+    display: none;
+    margin-top: 20px;
+}
+
+#sorpresa.visible {
+    display: block;
+    animation: aparecer 1s ease;
+}
+
+footer {
+    text-align: center;
+    padding: 35px 15px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 25px;
+    color: #c45c87;
+}
+
+#musica {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    z-index: 100;
+    box-shadow: 0 5px 15px #d88eae50;
+}
+
+.corazon {
+    position: fixed;
+    color: #e99bb9;
+    animation: flotar 6s linear forwards;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes flotar {
+    from {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 0.8;
+    }
+
+    to {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media(max-width: 600px) {
+    .card {
+        width: 100%;
+        max-width: 330px;
+    }
+
+    .seccion {
+        margin: 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Un lugar para ti ♡</h1>
+
+    <p>He creado este pequeño mundo pensando en ti...</p>
+
+    <p>Espero que cada rincón te recuerde lo especial que eres.</p>
+</header>
+
+<!-- OPCIONES PRINCIPALES -->
+
+<div class="menu">
+
+    <div class="card">
+        <div class="emoji">📸</div>
+
+        <h2>Nuestros recuerdos</h2>
+
+        <p>
+            Pequeños momentos que para mí
+            significan muchísimo.
+        </p>
+
+        <button onclick="abrir('recuerdos')">
+            Ver recuerdos ♡
+        </button>
+    </div>
+
+    <div class="card">
+        <div class="emoji">💌</div>
+
+        <h2>100 y 1</h2>
+
+        <p>
+            100 razones para quedarme
+            y una mentira para irme.
+        </p>
+
+        <button onclick="abrir('razones')">
+            Descubrir ♡
+        </button>
+    </div>
+
+    <div class="card">
+        <div class="emoji">🌷</div>
+
+        <h2>Poemas para ti</h2>
+
+        <p>
+            Palabras bonitas que nacen
+            cuando pienso en ti.
+        </p>
+
+        <button onclick="abrir('poemas')">
+            Leer poemas ♡
+        </button>
+    </div>
+
+</div>
+
+<!-- SECCION DE RECUERDOS -->
+
+<section id="recuerdos" class="seccion">
+
+    <h2>Nuestros recuerdos 📸</h2>
+
+    <p>
+        Si pudiera guardar cada momento bonito
+        en un lugar, sería aquí, donde siempre
+        pudiera volver a encontrarte.
+    </p>
+
+    <div class="galeria">
+
+        <img src="fotos/foto1.jpg" alt="Nuestro recuerdo">
+
+        <img src="fotos/foto2.jpg" alt="Un momento especial">
+
+        <img src="fotos/foto3.jpg" alt="Un día bonito">
+
+        <img src="fotos/foto4.jpg" alt="Un recuerdo más">
+
+    </div>
+
+    <div class="caja">
+
+        <h3>Lo que más me gusta recordar...</h3>
+
+        <p>
+            Cada risa, cada conversación,
+            cada pequeño detalle.
+
+            Tal vez para el mundo sean momentos
+            normales, pero para mí tienen algo
+            que los hace únicos: tú estabas ahí.
+        </p>
+
+    </div>
+
+    <button onclick="cerrar()">
+        Volver al inicio
+    </button>
+
+</section>
+
+<!-- SECCION DE RAZONES -->
+
+<section id="razones" class="seccion">
+
+    <h2>100 razones y 1 mentira 💌</h2>
+
+    <p>
+        Dicen que siempre hay razones para quedarse
+        y razones para marcharse...
+    </p>
+
+    <div class="caja">
+
+        <h3>100 razones para quedarme</h3>
+
+        <p id="listaRazones"></p>
+
+    </div>
+
+    <div class="caja">
+
+        <h3>Y la única razón para irme...</h3>
+
+        <p>
+            La mentira es que algún día podría dejar
+            de elegirte en mis recuerdos, en mis
+            pensamientos y en todas esas pequeñas
+            cosas que me hacen feliz.
+        </p>
+
+        <p>
+            Pero la verdad es que no quiero irme
+            de esta historia tan bonita que estamos
+            escribiendo.
+        </p>
+
+        <button onclick="mostrarSorpresa()">
+            Descubre la verdad ♡
+        </button>
+
+        <div id="sorpresa">
+
+            <h3>Era una mentira mi amor... 💗</h3>
+
+            <p>
+                No existe una razón que pueda borrar
+                todo lo bonito que significas para mí.
+
+                Si tuviera que elegir de nuevo,
+                volvería a elegir conocerte,
+                compartir mis días contigo
+                y guardar cada recuerdo en mi corazon
+                porque en mi corazon eres y seras tu.
+            </p>
+
+            <p class="poema">
+                Esa razón era mentira.<br>
+                Mi cariño por ti, no. ♡
+            </p>
+
+        </div>
+
+    </div>
+
+    <button onclick="cerrar()">
+        Volver al inicio
+    </button>
+
+</section>
+
+<!-- SECCION DE POEMAS -->
+
+<section id="poemas" class="seccion">
+
+    <h2>Poemas para ti 🌷</h2>
+
+    <div class="caja">
+
+        <h3>Poema 1 — Mi lugar favorito</h3>
+
+        <p class="poema">
+            No necesito un cielo lleno de estrellas,<br>
+            si puedo encontrar luz en tus palabras.<br>
+            No necesito un mundo perfecto,<br>
+            si contigo los pequeños momentos<br>
+            se vuelven recuerdos eternos.<br><br>
+
+            Porque entre tantas cosas bonitas,<br>
+            hay una que siempre elegiría:<br>
+            la casualidad de conocerte<br>
+            y la suerte de tenerte en mi vida.
+        </p>
+
+    </div>
+
+    <div class="caja">
+
+        <h3>Poema 2 — Si fueras una canción</h3>
+
+        <p class="poema">
+            Si fueras una canción,<br>
+            te escucharía en mis días tranquilos.<br>
+            Si fueras una fotografía,<br>
+            te guardaría entre mis recuerdos favoritos.<br><br>
+
+            Si fueras una palabra,<br>
+            serías la más bonita de mi historia.<br>
+            Y si fueras un sueño,<br>
+            serías de esos que uno recuerda<br>
+            incluso después de despertar.
+        </p>
+
+    </div>
+
+    <div class="caja">
+
+        <h3>Poema 3 — Para ti</h3>
+
+        <p class="poema">
+            Hay personas que llegan sin aviso,<br>
+            y sin saberlo cambian los días.<br>
+            Se convierten en canciones,<br>
+            en sonrisas y en pequeñas alegrías.<br><br>
+
+            Tú eres una de esas personas,<br>
+            de las que hacen bonito el camino.<br>
+            Y si pudiera pedir algo al destino,<br>
+            sería seguir encontrando<br>
+            momentos contigo.
+        </p>
+
+    </div>
+
+    <div class="caja">
+
+        <h3>Una última carta 💌</h3>
+
+        <p>
+            No sé si estas palabras logran explicar
+            todo lo que quiero decirte, pero hice
+            esta página con mucho amor para ti 
+            porque significas todo y a pesar de todo Y
+            las dificultades te amo y nunca deje de amarte 
+            espero muy prontito volver a ser ese niño que 
+            amas con locura y que sacrifiquemos cualquier
+            cosa por el otro te amoooo.
+        </p>
+
+        <p>
+            Cada fotografía, cada poema y cada detalle
+            tiene un pequeño pedacito de lo que
+            significas para mí y el mucho amor que 
+            tengo para darte mi hermosa cachetona.
+        </p>
+
+        <p class="poema">
+            Gracias por ser parte de mi historia y nunca dejes de serlo. ♡
+        </p>
+
+    </div>
+
+    <button onclick="cerrar()">
+        Volver al inicio
+    </button>
+
+</section>
+
+<!-- MUSICA AUTOMATICA -->
+
+<audio id="audio" loop autoplay preload="auto">
+    <source src="./musica/cancion.mp3" type="audio/mpeg">
+    Tu navegador no puede reproducir este audio.
+</audio>
+
+<button id="musica" onclick="activarMusica()">
+    💗 Activar música
+</button>
+
+<footer>
+    Hecho con muchisimo amor tu shushu ♡
+</footer>
+
+<script>
+
+// GENERAR LAS 100 RAZONES
+
+const razones = [
+"Haces especiales mis días.",
+"Me gusta tu forma de ser.",
+"Contigo puedo ser yo.",
+"Tus palabras me alegran.",
+"Me encanta compartir momentos contigo.",
+"Tienes una forma única de hacerme feliz.",
+"Me gusta escucharte hablar sin parar.",
+"Los días normales son bonitos contigo.",
+"Eres alguien que quiero cuidar.",
+"Siempre encuentro algo bonito en ti.",
+"Me haces sonreír sin darte cuenta.",
+"Valoro cada detalle tuyo.",
+"Me gusta conocerte cada día más.",
+"Eres parte de mis recuerdos favoritos.",
+"Me inspiras a escribir cosas bonitas.",
+"Tu presencia significa mucho.",
+"Me gusta cómo vemos el mundo.",
+"Contigo hay historias que contar y no parar.",
+"Me gusta imaginar momentos futuros.",
+"Eres una persona muy especial.",
+"Me gusta tu sonrisa colgate.",
+"Admiro tus pequeños detalles.",
+"Me gusta compartir mis pensamientos contigo.",
+"Haces memorables nuestras conversaciones.",
+"Me gusta saber cómo estuvo tu día.",
+"Quiero celebrar tus logros.",
+"Quiero acompañarte en tus sueños.",
+"Me gusta aprender de ti.",
+"Eres parte de mi felicidad.",
+"Contigo los recuerdos tienen otro significado.",
+"Me gusta hacerte reír.",
+"Disfruto nuestras ocurrencias.",
+"Me gusta compartir canciones contigo.",
+"Hay palabras que solo tú entiendes.",
+"Me gusta tu manera de expresarte.",
+"Quiero verte cumplir tus metas.",
+"Me gusta ser tu chatnoir.",
+"Me haces valorar los pequeños momentos.",
+"Tienes una luz especial.",
+"Me gusta recordar cómo nos conocimos.",
+"Cada fotito guarda una historia.",
+"Me gusta hablar contigo de cualquier cosa.",
+"Haces que el tiempo pase diferente.",
+"Quiero crear nuevos recuerdos.",
+"Me gusta tu sinceridad.",
+"Admiro tu esfuerzo.",
+"Me gusta verte feliz.",
+"Quiero apoyarte cuando lo necesites.",
+"Me gusta compartir mis alegrías contigo.",
+"Eres una bonita coincidencia.",
+"Me gusta tu creatividad.",
+"Me encanta descubrir tus gustos.",
+"Cada día aprendo algo nuevo de ti.",
+"Haces las cosas a tu manera.",
+"Valoro tu confianza.",
+"Me gustan nuestras conversaciones sinceras.",
+"Eres alguien con quien quiero conversar.",
+"Me gusta tu sentido del humor.",
+"Quiero que tengas días bonitos.",
+"Me gusta recordar nuestras bromas.",
+"Me haces apreciar los pequeños detalles.",
+"Me gusta tu energía.",
+"Quiero estar presente en tus buenos momentos.",
+"Me gusta que me hagas sentir valorado.",
+"Contigo puedo hablar con tranquilidad.",
+"Me gusta compartir mis ideas.",
+"Quiero conocer tus nuevos sueños.",
+"Me gusta celebrar las pequeñas victorias.",
+"Eres inspiración para mis poemas.",
+"Me gusta que seas auténtica.",
+"Me encanta tu forma de pensar.",
+"Quiero seguir aprendiendo contigo.",
+"Me gusta la confianza que construimos.",
+"Quiero guardar más fotografías bonitas.",
+"Me gustan nuestros momentos tranquilos.",
+"Haces que algunas canciones tengan significado.",
+"Me gusta hablar de nuestros planes.",
+"Quiero que te sientas apreciada.",
+"Me gusta tu manera de ver las cosas.",
+"Quiero seguir escribiendo nuestra historia.",
+"Me gusta cuando nos entendemos.",
+"Valoro lo que hemos vivido.",
+"Quiero recordar nuestras aventuras.",
+"Me gusta compartir cosas que me emocionan.",
+"Mereces cosas bonitas.",
+"Quiero verte cumplir tus sueños.",
+"Me gusta tu manera de sorprenderme.",
+"Cada recuerdo contigo es diferente.",
+"Me gusta la tranquilidad de hablar contigo.",
+"Quiero seguir conociendo tu mundo.",
+"Me gusta hacer detalles para ti.",
+"Me gusta dedicarte canciones.",
+"Quiero que sonrías al leer esto.",
+"Me gusta que formes parte de mis días.",
+"Te aprecio de verdad.",
+"Me gusta imaginar nuevas aventuras.",
+"Quiero cuidar nuestros recuerdos.",
+"Me gusta lo bonito que hemos construido a pesar de todo.",
+"Siempre hay algo nuevo que descubrir de ti.",
+"Simplemente, me importas muchísimo."
+];
+
+document.getElementById("listaRazones").innerHTML =
+razones.map((razon, i) => `${i + 1}. ${razon}`).join("<br>");
+
+
+// ABRIR SECCIONES
+
+function abrir(id) {
+
+    document.querySelectorAll(".seccion").forEach(seccion => {
+        seccion.classList.remove("activa");
+    });
+
+    const seccion = document.getElementById(id);
+
+    seccion.classList.add("activa");
+
+    seccion.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+
+
+// VOLVER AL INICIO
+
+function cerrar() {
+
+    document.querySelectorAll(".seccion").forEach(seccion => {
+        seccion.classList.remove("activa");
+    });
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+// MOSTRAR SORPRESA
+
+function mostrarSorpresa() {
+
+    const sorpresa = document.getElementById("sorpresa");
+
+    sorpresa.classList.add("visible");
+
+    sorpresa.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+}
+
+
+// MUSICA AUTOMATICA
+
+const audio = document.getElementById("audio");
+const botonMusica = document.getElementById("musica");
+
+window.addEventListener("load", async () => {
+
+    try {
+
+        await audio.play();
+
+        botonMusica.style.display = "none";
+
+    } catch (error) {
+
+        // El navegador puede bloquear el sonido automático.
+        botonMusica.style.display = "block";
+
+    }
+
+});
+
+
+// ACTIVAR MUSICA
+
+async function activarMusica() {
+
+    try {
+
+        await audio.play();
+
+        botonMusica.textContent = "⏸ Pausar música";
+
+        botonMusica.onclick = pausarMusica;
+
+    } catch (error) {
+
+        alert(
+            "No se pudo reproducir. " +
+            "Revisa que el archivo esté en " +
+            "musica/cancion.mp3."
+        );
+
+    }
+
+}
+
+
+// PAUSAR MUSICA
+
+function pausarMusica() {
+
+    audio.pause();
+
+    botonMusica.textContent = "💗 Activar música";
+
+    botonMusica.onclick = activarMusica;
+
+}
+
+
+// CORAZONES FLOTANTES
+
+function crearCorazon() {
+
+    const corazon = document.createElement("div");
+
+    corazon.className = "corazon";
+    corazon.textContent = "♡";
+
+    corazon.style.left =
+        Math.random() * 100 + "vw";
+
+    corazon.style.fontSize =
+        (15 + Math.random() * 25) + "px";
+
+    corazon.style.animationDuration =
+        (4 + Math.random() * 5) + "s";
+
+    document.body.appendChild(corazon);
+
+    setTimeout(() => {
+        corazon.remove();
+    }, 9000);
+
+}
+
+setInterval(crearCorazon, 700);
+
+</script>
+
+</body>
+</html>
